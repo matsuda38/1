@@ -66,3 +66,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+:root { --fg:#111; --bg:#fff; --muted:#6b7280; }
+* { box-sizing: border-box; }
+body { margin:0; color:var(--fg); background:var(--bg); font-family:system-ui, sans-serif; }
+.container { max-width:960px; margin:0 auto; padding:16px; }
+.header { border-bottom:1px solid #eee; }
+.header-inner { display:flex; align-items:center; justify-content:space-between; }
+.brand { text-decoration:none; font-weight:700; color:var(--fg); }
+.nav a { margin-left:12px; text-decoration:none; color:var(--fg); }
+.nav a.active { border-bottom:2px solid var(--fg); }
+main { min-height:70vh; padding-block:24px; }
+.footer { border-top:1px solid #eee; padding-block:16px; color:var(--muted); }
