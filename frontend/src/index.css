@@ -73,8 +73,8 @@ body { margin:0; color:var(--fg); background:var(--bg); font-family:system-ui, s
 .header { border-bottom:1px solid #eee; }
 .header-inner { display:flex; align-items:center; justify-content:space-between; }
 .brand { text-decoration:none; font-weight:700; color:var(--fg); }
-.nav a { margin-left:12px; text-decoration:none; color:var(--fg); }
-.nav a.active { border-bottom:2px solid var(--fg); }
+.nav { display:flex; align-items:center; gap:12px; }
+.nav-button { min-width:auto; }
 main { min-height:70vh; padding-block:24px; }
 .footer { border-top:1px solid #eee; padding-block:16px; color:var(--muted); }
 
