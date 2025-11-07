@@ -1,28 +1,25 @@
-import { Link as RouterLink, useMatch, useResolvedPath } from "react-router-dom";
-import { Button, Link as NextLink } from "@nextui-org/react";
+import type { ReactNode } from "react";
+import { Link, NavLink, useMatch, useResolvedPath } from "react-router-dom";
 
-interface NavItemProps {
+type HeaderNavLinkProps = {
   to: string;
-  label: string;
+  children: ReactNode;
   end?: boolean;
-}
+};
 
-function NavItem({ to, label, end }: NavItemProps) {
+function HeaderNavLink({ to, end, children }: HeaderNavLinkProps) {
   const resolved = useResolvedPath(to);
   const match = useMatch({ path: resolved.pathname, end: end ?? false });
 
   return (
-    <Button
-      as={RouterLink}
+    <NavLink
       to={to}
-      size="sm"
-      color="primary"
-      variant={match ? "solid" : "light"}
-      className="nav-button"
+      end={end}
+      className={({ isActive }) => (isActive ? "active" : undefined)}
       aria-current={match ? "page" : undefined}
     >
-      {label}
-    </Button>
+      {children}
+    </NavLink>
   );
 }
 
@@ -30,18 +27,16 @@ export default function Header() {
   return (
     <header className="header">
       <div className="container header-inner">
-        <NextLink
-          as={RouterLink}
-          to="/"
-          className="brand"
-          color="foreground"
-          underline="none"
-        >
+        <Link to="/" className="brand">
           Handshake
-        </NextLink>
+        </Link>
         <nav className="nav">
-          <NavItem to="/" label="Home" end />
-          <NavItem to="/about" label="About" />
+          <HeaderNavLink to="/" end>
+            Home
+          </HeaderNavLink>
+          <HeaderNavLink to="/about">
+            About
+          </HeaderNavLink>
         </nav>
       </div>
     </header>
